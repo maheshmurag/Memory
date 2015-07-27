@@ -14,10 +14,15 @@ angular.module('starter.services', [])
             .success(function (data) {
                 var tmp = data;
                 terms = [];
-                for (obj in tmp) {
+//                alert("line 17: " + JSON.stringify(data))
+                for (var i = 0; i < tmp.length; i++) {
                     var termsObj = {};
+                    var obj = tmp[i];
+//                    console.log("line 20: " + obj.term)
                     termsObj.term = obj.term;
                     termsObj.definition = obj.definition;
+                    termsObj.timesReviewed = 0;
+                    termsObj.state = 0;//Learning=1,Reviewed=2,Mastered=3
                     terms.push(termsObj);
                 }
                 deferred.resolve(terms);
